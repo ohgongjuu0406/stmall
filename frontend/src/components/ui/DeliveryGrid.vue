@@ -107,7 +107,7 @@
                     </v-toolbar>
                     <v-card-text>
                         <div>
-                            <String label="OrderId" v-model="selectedRow.orderId" :editMode="true"/>
+                            <Number label="OrderId" v-model="selectedRow.orderId" :editMode="true"/>
                             <String label="CustomerId" v-model="selectedRow.customerId" :editMode="true"/>
                             <String label="ItemId" v-model="selectedRow.itemId" :editMode="true"/>
                             <Number label="Qty" v-model="selectedRow.qty" :editMode="true"/>

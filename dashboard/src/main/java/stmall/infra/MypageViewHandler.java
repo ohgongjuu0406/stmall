@@ -48,7 +48,7 @@ public class MypageViewHandler {
             if (!deliveryCompleted.validate()) return;
             // view 객체 조회
             Optional<Mypage> mypageOptional = mypageRepository.findByOrderId(
-                Long.valueOf(deliveryCompleted.getOrderId())
+                deliveryCompleted.getOrderId()
             );
 
             if (mypageOptional.isPresent()) {
@@ -64,20 +64,20 @@ public class MypageViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenOrderCanceled_then_UPDATE_2(
-        @Payload OrderCanceled orderCanceled
+    public void whenOrderCancelled_then_UPDATE_2(
+        @Payload OrderCancelled orderCancelled
     ) {
         try {
-            if (!orderCanceled.validate()) return;
+            if (!orderCancelled.validate()) return;
             // view 객체 조회
             Optional<Mypage> mypageOptional = mypageRepository.findByOrderId(
-                orderCanceled.getId()
+                orderCancelled.getId()
             );
 
             if (mypageOptional.isPresent()) {
                 Mypage mypage = mypageOptional.get();
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                mypage.setOrderStatus(ORDERCANCELED);
+                mypage.setOrderStatus(ORDERCANCELLED);
                 // view 레파지 토리에 save
                 mypageRepository.save(mypage);
             }
@@ -94,13 +94,13 @@ public class MypageViewHandler {
             if (!deliveryReturned.validate()) return;
             // view 객체 조회
             Optional<Mypage> mypageOptional = mypageRepository.findByOrderId(
-                Long.valueOf(deliveryReturned.getOrderId())
+                deliveryReturned.getOrderId()
             );
 
             if (mypageOptional.isPresent()) {
                 Mypage mypage = mypageOptional.get();
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                mypage.setDeliveryStatus(RETURNED);
+                mypage.setDeliveryStatus(DELIVERYRETURNED);
                 // view 레파지 토리에 save
                 mypageRepository.save(mypage);
             }

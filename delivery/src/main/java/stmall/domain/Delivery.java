@@ -22,7 +22,7 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String orderId;
+    private Long orderId;
 
     private String customerId;
 
@@ -71,7 +71,7 @@ public class Delivery {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public static void cancelDelivery(OrderCanceled orderCanceled) {
+    public static void cancelDelivery(OrderCancelled orderCancelled) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -85,7 +85,7 @@ public class Delivery {
         /** Example 2:  finding and process
         
 
-        repository().findById(orderCanceled.get???()).ifPresent(delivery->{
+        repository().findById(orderCancelled.get???()).ifPresent(delivery->{
             
             delivery // do something
             repository().save(delivery);

@@ -24,7 +24,7 @@ public class Inventory {
 
     private String name;
 
-    private String stock;
+    private Integer stock;
 
     public static InventoryRepository repository() {
         InventoryRepository inventoryRepository = ProductApplication.applicationContext.getBean(

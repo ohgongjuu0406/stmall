@@ -1,6 +1,6 @@
 <template>
     <div>
-        <String
+        <Number
             label="OrderId"
             v-model="value.orderId"
             :editMode="editMode"

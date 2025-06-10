@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 import stmall.OrderApplication;
-import stmall.domain.OrderCanceled;
+import stmall.domain.OrderCancelled;
 import stmall.domain.OrderPlaced;
 
 @Entity
@@ -40,8 +40,8 @@ public class Order {
 
     @PreRemove
     public void onPreRemove() {
-        OrderCanceled orderCanceled = new OrderCanceled(this);
-        orderCanceled.publishAfterCommit();
+        OrderCancelled orderCancelled = new OrderCancelled(this);
+        orderCancelled.publishAfterCommit();
     }
 
     public static OrderRepository repository() {
